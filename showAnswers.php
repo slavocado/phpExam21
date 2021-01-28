@@ -62,7 +62,7 @@ function get_answers($conn)
     <thead>
     <tr>
         <th scope="col">Id ответа</th>
-        <th scope="col">Id вопроса</th>
+        <th scope="col">Вопрос</th>
         <th scope="col">Ответ</th>
         <th scope="col">Дата и веремя ответа</th>
         <th scope="col">IP</th>
