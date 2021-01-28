@@ -8,7 +8,8 @@ if($_POST != []) {
     $query = mysqli_query($conn, "SELECT id FROM `sessions` ORDER BY id DESC LIMIT 1;");
     while ($row = mysqli_fetch_assoc($query)) {
         $session_id = $row['id'];
-        $link = 'user.php?session_id=' . $session_id;
+        $up_id = uniqid();
+        $link = 'user.php?session_id=' . $session_id . '&' . $up_id;
         echo $link;
         $update_query = mysqli_query($conn,"UPDATE `sessions` SET link='$link' WHERE id='$session_id'");
     }
