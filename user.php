@@ -1,10 +1,6 @@
 <?php
 require 'db.php';
 
-if ($_COOKIE['isAdmin'] == false){
-    header ('Location: index.php');
-}
-
 if(isset($_GET['session_id'])) {
     $session_id = $_GET['session_id'];
 }
@@ -27,7 +23,7 @@ if(isset($_GET['session_id'])) {
 <body class="min-vh-100 d-flex">
 
 <div class="container">
-    <form>
+    <form action="addAnswers.php" method="post">
         <?php
             $get_data = mysqli_query($conn, "SELECT * FROM `sessions` WHERE id = '$session_id'");
             if (mysqli_num_rows($get_data) > 0) {
@@ -45,7 +41,7 @@ if(isset($_GET['session_id'])) {
                             echo '
                                 <div class="form-group">
                                     <label for="question' . $question['id'] . '"> ' . $question['data'] . ' </label>
-                                    <input type="number" class="form-control" id="question' . $question['id'] . '" placeholder="Ответ" name="' . $question['id'].$question['type'] . '">
+                                    <input type="number" class="form-control" id="question' . $question['id'] . '" placeholder="Ответ" name="' . $question['id'] . '">
                                 </div>';
                             break;
 
@@ -53,7 +49,7 @@ if(isset($_GET['session_id'])) {
                             echo '
                                 <div class="form-group">
                                     <label for="question' . $question['id'] . '"> ' . $question['data'] . ' </label>
-                                    <input type="number" min="0" class="form-control" id="question' . $question['id'] . '" placeholder="Ответ" name="' . $question['id'].$question['type'] . '">
+                                    <input type="number" min="0" class="form-control" id="question' . $question['id'] . '" placeholder="Ответ" name="' . $question['id'] . '">
                                 </div>';
                             break;
 
@@ -61,7 +57,7 @@ if(isset($_GET['session_id'])) {
                             echo '
                                 <div class="form-group">
                                     <label for="question' . $question['id'] . '"> ' . $question['data'] . ' </label>
-                                    <input type="text" maxlength="30" class="form-control" id="question' . $question['id'] . '" placeholder="Ответ" name="' . $question['id'].$question['type'] . '">
+                                    <input type="text" maxlength="30" class="form-control" id="question' . $question['id'] . '" placeholder="Ответ" name="' . $question['id'] . '">
                                 </div>';
                             break;
 
@@ -69,11 +65,12 @@ if(isset($_GET['session_id'])) {
                             echo '
                                 <div class="form-group">
                                     <label for="question' . $question['id'] . '"> ' . $question['data'] . ' </label>
-                                    <input type="text" maxlength="255" class="form-control" id="question' . $question['id'] . '" placeholder="Ответ" name="' . $question['id'].$question['type'] . '">
+                                    <input type="text" maxlength="255" class="form-control" id="question' . $question['id'] . '" placeholder="Ответ" name="' . $question['id'] . '">
                                 </div>';
                             break;
                     }
                 }
+                echo '<input type="hidden" name="session_id" value="'. $session_id .'">';
             } else {
                 echo "<h3>No records found. Please insert some records</h3>";
             }
