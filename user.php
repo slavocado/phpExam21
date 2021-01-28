@@ -29,46 +29,54 @@ if(isset($_GET['session_id'])) {
 <div class="container">
     <form>
         <?php
-                $get_data = mysqli_query($conn, "SELECT * FROM `questions` WHERE session_id = '$session_id'");
-                if (mysqli_num_rows($get_data) > 0) {
-                    while ($question = mysqli_fetch_assoc($get_data)) {
-                        switch ($question['type']){
-                            case 'number':
-                                echo '
-                                    <div class="form-group">
-                                        <label for="question' . $question['id'] . '"> ' . $question['data'] . ' </label>
-                                        <input type="number" class="form-control" id="question' . $question['id'] . '" placeholder="Ответ" name="' . $question['id'].$question['type'] . '">
-                                    </div>';
-                                break;
-
-                            case 'positive-n':
-                                echo '
-                                    <div class="form-group">
-                                        <label for="question' . $question['id'] . '"> ' . $question['data'] . ' </label>
-                                        <input type="number" min="0" class="form-control" id="question' . $question['id'] . '" placeholder="Ответ" name="' . $question['id'].$question['type'] . '">
-                                    </div>';
-                                break;
-
-                            case 'string':
-                                echo '
-                                    <div class="form-group">
-                                        <label for="question' . $question['id'] . '"> ' . $question['data'] . ' </label>
-                                        <input type="text" maxlength="30" class="form-control" id="question' . $question['id'] . '" placeholder="Ответ" name="' . $question['id'].$question['type'] . '">
-                                    </div>';
-                                break;
-
-                            case 'text':
-                                echo '
-                                    <div class="form-group">
-                                        <label for="question' . $question['id'] . '"> ' . $question['data'] . ' </label>
-                                        <input type="text" maxlength="255" class="form-control" id="question' . $question['id'] . '" placeholder="Ответ" name="' . $question['id'].$question['type'] . '">
-                                    </div>';
-                                break;
-                        }
-                    }
-                } else {
-                    echo "<h3>No records found. Please insert some records</h3>";
+            $get_data = mysqli_query($conn, "SELECT * FROM `sessions` WHERE id = '$session_id'");
+            if (mysqli_num_rows($get_data) > 0) {
+                $session  = mysqli_fetch_assoc($get_data);
+                if ($session['status'] == 'archive'){
+                    header ('Location: sessions.php');
                 }
+            }
+
+            $get_data = mysqli_query($conn, "SELECT * FROM `questions` WHERE session_id = '$session_id'");
+            if (mysqli_num_rows($get_data) > 0) {
+                while ($question = mysqli_fetch_assoc($get_data)) {
+                    switch ($question['type']){
+                        case 'number':
+                            echo '
+                                <div class="form-group">
+                                    <label for="question' . $question['id'] . '"> ' . $question['data'] . ' </label>
+                                    <input type="number" class="form-control" id="question' . $question['id'] . '" placeholder="Ответ" name="' . $question['id'].$question['type'] . '">
+                                </div>';
+                            break;
+
+                        case 'positive-n':
+                            echo '
+                                <div class="form-group">
+                                    <label for="question' . $question['id'] . '"> ' . $question['data'] . ' </label>
+                                    <input type="number" min="0" class="form-control" id="question' . $question['id'] . '" placeholder="Ответ" name="' . $question['id'].$question['type'] . '">
+                                </div>';
+                            break;
+
+                        case 'string':
+                            echo '
+                                <div class="form-group">
+                                    <label for="question' . $question['id'] . '"> ' . $question['data'] . ' </label>
+                                    <input type="text" maxlength="30" class="form-control" id="question' . $question['id'] . '" placeholder="Ответ" name="' . $question['id'].$question['type'] . '">
+                                </div>';
+                            break;
+
+                        case 'text':
+                            echo '
+                                <div class="form-group">
+                                    <label for="question' . $question['id'] . '"> ' . $question['data'] . ' </label>
+                                    <input type="text" maxlength="255" class="form-control" id="question' . $question['id'] . '" placeholder="Ответ" name="' . $question['id'].$question['type'] . '">
+                                </div>';
+                            break;
+                    }
+                }
+            } else {
+                echo "<h3>No records found. Please insert some records</h3>";
+            }
         ?>
 
         <button type="submit" class="btn btn-primary mt-3">Отправить</button>

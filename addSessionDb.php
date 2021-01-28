@@ -8,7 +8,7 @@ if($_POST != []) {
     while ($row = mysqli_fetch_assoc($query)) {
         $session_id = $row['id'] + 1;
         $link = 'user.php?session_id=' . $session_id;
-        $insert_query = mysqli_query($conn, "INSERT INTO `sessions` (`id`, `link`, `status`) VALUES (NULL, '$link', 'Working');");
+        $insert_query = mysqli_query($conn, "INSERT INTO `sessions` (`id`, `link`, `status`) VALUES (NULL, '$link', 'working');");
     }
 
     foreach ($_POST as $type => $question){
