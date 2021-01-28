@@ -8,7 +8,7 @@ if($_POST != []) {
     while ($row = mysqli_fetch_assoc($query)) {
         $session_id = $row['id'] + 1;
         $link = 'user.php?session_id=' . $session_id;
-        $insert_query = mysqli_query($conn, "INSERT INTO `sessions` (link, status) VALUES ('$link','Working')");
+        $insert_query = mysqli_query($conn, "INSERT INTO `sessions` (`id`, `link`, `status`) VALUES (NULL, '$link', 'Working');");
     }
 
     foreach ($_POST as $type => $question){
@@ -17,8 +17,9 @@ if($_POST != []) {
         $query_question = mysqli_real_escape_string($conn, htmlspecialchars($question));
         $insert_query = mysqli_query($conn, "INSERT INTO `questions` (session_id, type, data) VALUES ( '$session_id', '$str', '$query_question')");
 
+
     }
 
-    header ('Location: sessions.php');
-
 }
+
+header ('Location: sessions.php');
