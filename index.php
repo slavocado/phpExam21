@@ -44,6 +44,7 @@
 
         if ($_POST['password'] == $password){
             echo '<a href="sessions.php" class="h3">Перейти на старницу сессий</a>';
+            setcookie('isAdmin',true,time() + 3600,"/");
         } else {
             echo '<h3>Пароль неверный</h3>';
         }
