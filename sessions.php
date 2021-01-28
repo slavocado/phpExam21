@@ -19,6 +19,7 @@ function get_sessions_data($conn)
                     <td><a href="' . $row['link'] . '">' . $row['link'] . '</a></td>
                     <td>' . $row['status'] . '</td>
                     <td>
+                        <a href="showAnswers.php?session_id=' . $row['id'] . '" type="button" class="btn btn-primary">Ответы</a>
                         <a href="archiveSession.php?session_id=' . $row['id'] . '" type="button" class="btn btn-warning">Архивировать</a>
                         <a href="deleteSession.php?session_id=' . $row['id'] . '" type="button" class="btn btn-danger">Удалить</a>
                     </td>
