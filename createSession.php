@@ -39,8 +39,8 @@ if (isset($_GET['add_type'])){
                 <option value="positive-n">положительное число</option>
                 <option value="string">строка</option>
                 <option value="text">текст</option>
-                <option value="radio">с единственным выбором </option>
-                <option value="checkbox">с множественным выбором</option>
+<!--                <option value="radio">с единственным выбором </option>-->
+<!--                <option value="checkbox">с множественным выбором</option>-->
             </select>
             <?php
                 $string_arr = implode("+", $types_arr);
@@ -60,7 +60,7 @@ if (isset($_GET['add_type'])){
                         echo '
                             <div class="form-group">
                                 <label for="question' . $key . '">Вопрос ' . $key . ' типа число</label>
-                                <input type="text" class="form-control" id="question' . $key . '" placeholder="Question" name="' . $key.$input_type . '">
+                                <input required type="text" class="form-control" id="question' . $key . '" placeholder="Question" name="' . $key.$input_type . '">
                             </div>';
                         break;
 
@@ -68,7 +68,7 @@ if (isset($_GET['add_type'])){
                         echo '
                             <div class="form-group">
                                 <label for="question' . $key . '">Вопрос' . $key . ' типа положительное число</label>
-                                <input type="text" class="form-control" id="question' . $key . '" placeholder="Question" name="' . $key.$input_type . '">
+                                <input required type="text" class="form-control" id="question' . $key . '" placeholder="Question" name="' . $key.$input_type . '">
                             </div>';
                         break;
 
@@ -76,7 +76,7 @@ if (isset($_GET['add_type'])){
                         echo '
                             <div class="form-group">
                                 <label for="question' . $key . '">Вопрос' . $key . ' типа строка</label>
-                                <input type="text"  class="form-control" id="question' . $key . '" placeholder="Question" name="' . $key.$input_type . '">
+                                <input required type="text"  class="form-control" id="question' . $key . '" placeholder="Question" name="' . $key.$input_type . '">
                             </div>';
                         break;
 
@@ -84,7 +84,7 @@ if (isset($_GET['add_type'])){
                         echo '
                             <div class="form-group">
                                 <label for="question' . $key . '">Вопрос' . $key . ' типа текст</label>
-                                <input type="text" class="form-control" id="question' . $key . '" placeholder="Question" name="' . $key.$input_type . '">
+                                <input required type="text" class="form-control" id="question' . $key . '" placeholder="Question" name="' . $key.$input_type . '">
                             </div>';
                         break;
                 }

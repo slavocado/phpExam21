@@ -41,7 +41,7 @@ if(isset($_GET['session_id'])) {
                             echo '
                                 <div class="form-group">
                                     <label for="question' . $question['id'] . '"> ' . $question['data'] . ' </label>
-                                    <input type="number" class="form-control" id="question' . $question['id'] . '" placeholder="Ответ" name="' . $question['id'] . '">
+                                    <input required type="number" class="form-control" id="question' . $question['id'] . '" placeholder="Ответ" name="' . $question['id'] . '">
                                 </div>';
                             break;
 
@@ -49,7 +49,7 @@ if(isset($_GET['session_id'])) {
                             echo '
                                 <div class="form-group">
                                     <label for="question' . $question['id'] . '"> ' . $question['data'] . ' </label>
-                                    <input type="number" min="0" class="form-control" id="question' . $question['id'] . '" placeholder="Ответ" name="' . $question['id'] . '">
+                                    <input required type="number" min="0" class="form-control" id="question' . $question['id'] . '" placeholder="Ответ" name="' . $question['id'] . '">
                                 </div>';
                             break;
 
@@ -57,7 +57,7 @@ if(isset($_GET['session_id'])) {
                             echo '
                                 <div class="form-group">
                                     <label for="question' . $question['id'] . '"> ' . $question['data'] . ' </label>
-                                    <input type="text" maxlength="30" class="form-control" id="question' . $question['id'] . '" placeholder="Ответ" name="' . $question['id'] . '">
+                                    <input required type="text" maxlength="30" class="form-control" id="question' . $question['id'] . '" placeholder="Ответ" name="' . $question['id'] . '">
                                 </div>';
                             break;
 
@@ -65,7 +65,7 @@ if(isset($_GET['session_id'])) {
                             echo '
                                 <div class="form-group">
                                     <label for="question' . $question['id'] . '"> ' . $question['data'] . ' </label>
-                                    <input type="text" maxlength="255" class="form-control" id="question' . $question['id'] . '" placeholder="Ответ" name="' . $question['id'] . '">
+                                    <input required type="text" maxlength="255" class="form-control" id="question' . $question['id'] . '" placeholder="Ответ" name="' . $question['id'] . '">
                                 </div>';
                             break;
                     }

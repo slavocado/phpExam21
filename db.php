@@ -1,9 +1,9 @@
 <?php
 
-$servername = "localhost";
-$username = "root";
-$password = "root";
-$db_name = "session_app";
+$servername = "std-mysql";
+$username = "std_947_phpexam";
+$password = "admin123";
+$db_name = "std_947_phpexam";
 
 // Create connection
 $conn = mysqli_connect($servername, $username, $password, $db_name);
