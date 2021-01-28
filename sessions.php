@@ -62,8 +62,7 @@ function get_sessions_data($conn)
     </tr>
     </thead>
     <?php
-//    Todo: uncomment line
-//    get_sessions_data($conn);
+    get_sessions_data($conn);
     ?>
 </table>
 

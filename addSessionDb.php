@@ -19,4 +19,6 @@ if($_POST != []) {
 
     }
 
+    header ('Location: sessions.php');
+
 }
